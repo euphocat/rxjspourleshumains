@@ -6,6 +6,7 @@ import {
   Appear,
   BlockQuote,
   Cite,
+  Code,
   CodePane,
   Deck,
   Fill,
@@ -19,7 +20,8 @@ import {
   Quote,
   Slide,
   Spectacle,
-  Text
+  Text,
+  S
 } from "spectacle";
 
 // Import image preloader util
@@ -30,141 +32,314 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Import custom component
 import Interactive from "../assets/interactive";
+import TimeDifference from "../assets/code.example6";
 
 // Require CSS
 require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
 
-
 const images = {
   city: require("../assets/city.jpg"),
   kat: require("../assets/kat.png"),
   logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
+  markdown: require("../assets/markdown.png"),
+  humans: require('../assets/corporate-yoga-group2.jpg'),
+  biscotte: require('../assets/biscotte.jpg'),
+  back: require('../assets/back.jpg'),
+  katty: require('../assets/katty.jpg'),
+  ben: require('../assets/ben.jpg')
 };
 
 preloader(images);
 
 const theme = createTheme({
-  primary: "#ff4081"
+  primary: "#967d4d",
+  secondary: "white",
+  tertiary: "white",
+  quartenary: "white"
 });
 
 export default class Presentation extends React.Component {
-  render() {
+  render () {
     return (
       <Spectacle theme={theme}>
         <Deck transition={["zoom", "slide"]} transitionDuration={500}>
-          <Slide transition={["zoom"]} bgColor="primary">
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle
+          <Slide transition={["zoom"]} bgDarken={0.75} bgImage={images.humans.replace("/", "")}>
+            <Heading textSize="4em" caps lineHeight={1} textColor="primary">
+              RxJS
             </Heading>
             <Heading size={1} fit caps>
-              A ReactJS Presentation Library
+              Pour les humains
             </Heading>
-            <Heading size={1} fit caps textColor="black">
-              Where You Can Write Your Decks In JSX
+            <Heading size={5} textColor="primary">
+              Nicolas BAPTISTE
             </Heading>
-            <Link href="https://github.com/FormidableLabs/spectacle">
-              <Text bold caps textColor="tertiary">View on Github</Text>
+            <Heading size={6} textColor="secondary">
+              Twitter <Link textColor="secondary" href="https://twitter.com/euphocat/">
+              <S type="underline">@euphocat</S>
             </Link>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
-            <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
-            <Heading size={2} caps fit textColor="primary" textFont="primary">
-              Wait what?
             </Heading>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <CodePane
-              lang="jsx"
-              source={require("raw!../assets/deck.example")}
-              margin="20px auto"
-            />
+
+          <Slide transition={["slide"]} bgColor="black"
+                 notes="You can even put notes on your slide. How awesome is that?">
+
+            <Heading size={2} caps fit textFont="primary">
+              C'est quoi encore ce truc ?
+            </Heading>
+
+            <Appear><Heading size={2} caps fit textColor="primary" textFont="primary">
+              Encore une autre librairie JS ???
+            </Heading></Appear>
+
+            <Appear><Heading size={2} caps fit textFont="primary">
+              A quoi ça va me servir ?
+            </Heading></Appear>
+
+            <Appear><Heading size={2} caps fit textColor="primary" textFont="primary">
+              Comment en est-on arrivé là ?
+            </Heading></Appear>
+
           </Slide>
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+
+          <Slide transition={["slide"]} bgImage={images.back.replace("/", "")} bgDarken={0.75}
+                 notes="You can even put notes on your slide. How awesome is that?">
+            <Heading size={2} caps fit textColor="primary" textFont="primary">
+              Remontons le temps
+            </Heading>
+            <Heading size={2} caps fit textFont="primary">
+              L'histoire du code asynchrone en JS
+            </Heading>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="primary"
+                 notes="You can even put notes on your slide. How awesome is that?">
+            <Heading size={2} fit textFont="primary">
+              xhr, XMLHttpRequest, AJAX
+            </Heading>
+            <CodePane lang="javascript"
+                      source={require("raw!../assets/code.example2.code")}
+                      textSize=".8em"/>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="black"
+                 notes="You can even put notes on your slide. How awesome is that?">
+            <Heading size={2} fit textFont="primary">
+              jQuery $.ajax, $.get, $.post, $.etc...
+            </Heading>
+            <CodePane lang="javascript"
+                      source={require("raw!../assets/code.example3.code")}
+                      textSize="1em"/>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="black"
+                 notes="You can even put notes on your slide. How awesome is that?">
+            <Heading size={2} caps textFont="primary">
+              Callback HELL
+            </Heading>
+            <CodePane lang="javascript"
+                      source={require("raw!../assets/code.example4.code")}/>
+          </Slide>
+
+          <Slide transition={["slide"]} bgDarken={0.75} bgImage={images.biscotte.replace("/", "")} bgColor="black">
+            <Appear><Heading caps textSize="2em" textFont="primary">
+              Les promesses
+            </Heading>
+            </Appear>
+            <Appear>
+              <CodePane lang="javascript"
+                        source={require("raw!../assets/code.example5.code")}
+                        textSize=".5em"/>
+            </Appear>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="black">
+            <Heading size={2} fit caps textFont="primary">
+              Petit exercice (mental)
+            </Heading>
+            <Appear>
+              <Heading size={2} fit caps textColor="primary" textFont="primary">
+                Un compteur de clics
+              </Heading>
+            </Appear>
+            <Appear>
+              <Heading size={2} fit caps textFont="primary">
+                Facile !
+              </Heading>
+            </Appear>
+          </Slide>
+
+          <Slide transition={["slide"]}>
+            <Heading size={2} fit caps textFont="primary">
+              Autre petit exercice
+            </Heading>
+            <Appear>
+              <Heading size={2} fit caps textColor="black" textFont="primary">
+                Calculer le temps entre 2 clics
+              </Heading>
+            </Appear>
+            <Appear>
+              <Heading size={2} fit caps textFont="primary">
+                On fait moins les malins !
+              </Heading>
+            </Appear>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="black">
+            <Heading caps textSize="2em" textFont="primary">
+              La solution avec RxJS
+              <TimeDifference textColor="primary"/>
+            </Heading>
+
             <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                Full Width
-              </Heading>
-            </Appear>
-            <Appear fid="2">
-              <Heading size={1} caps fit textColor="tertiary">
-                Adjustable Darkness
-              </Heading>
-            </Appear>
-            <Appear fid="3">
-              <Heading size={1} caps fit textColor="primary">
-                Background Imagery
-              </Heading>
+              <CodePane lang="javascript"
+                        source={require("raw!../assets/code.example6.rxjs")}
+                        textSize=".9em"/>
             </Appear>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Flexible Layouts</Heading>
+
+          <Slide>
+
+            <Heading margin="0 0 .5em" fit caps>Représentation d'un flux</Heading>
+
+            <Heading margin="0 0 .5em" fit caps>
+              <Code>
+                --a---b-c---X---d---|->
+              </Code>
+            </Heading>
+
+            <Text><S type="bold">---></S> représente le temps</Text>
+            <Text textColor="secondary"><S type="bold">a, b, c, d</S> sont des valeurs</Text>
+            <Text><S type="bold">X</S> est une erreur</Text>
+            <Text textColor="secondary"><S type="bold">|</S> représente signal 'completed'</Text>
+
+          </Slide>
+
+          <Slide>
+            <Heading fit caps margin="0 0 .5em">Observables &amp; observers</Heading>
+            <List>
+              <ListItem size={4} textAlign="left" margin="0 0 1em">Un flux est appelé Observable</ListItem>
+              <ListItem size={4} textAlign="left">La "réaction" à ce flux se fait avec un Observer</ListItem>
+            </List>
+          </Slide>
+
+          <Slide bgColor="black">
+
+            <Heading fit caps>Création d'observables</Heading>
+            <Heading fit caps>A partir d'éléments existants</Heading>
+            <List>
+              <ListItem textColor="primary">De tableaux, de Sets, de Maps, de Generators via
+                Rx.Observable.from()</ListItem>
+              <ListItem>D'événements avec Rx.Observable.fromEvent()</ListItem>
+              <ListItem textColor="primary">De callbacks avec Rx.Observable.fromCallback()</ListItem>
+              <ListItem>De promesses avec Rx.Observable.fromPromise();</ListItem>
+            </List>
+
+          </Slide>
+
+          <Slide>
+            <Heading fit caps>Mais vous pouvez aussi créer les votres</Heading>
+            <List>
+              <ListItem>Avec Rx.Observable.create()</ListItem>
+              <ListItem>Avec Rx.Subject() qui est à la fois un observerable et un observer (sorte de
+                proxy)</ListItem>
+            </List>
+          </Slide>
+
+          <Slide bgColor="black">
             <Layout>
+              <Fill><Image src={images.ben.replace("/", "")} width="80%"/></Fill>
               <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
+                <BlockQuote>
+                  <Quote>RxJS is Lodash for events</Quote>
+                  <Cite>@BenLesh - RxJS 5 Project Lead</Cite>
+                </BlockQuote>
               </Fill>
             </Layout>
           </Slide>
-          <Slide transition={["slide"]} bgColor="black">
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
-              Inline Markdown
-            </Heading>
-            <Markdown>
-              {`
-![Markdown Logo](${images.markdown.replace("/", "")})
 
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
-            </Markdown>
+          <Slide>
+            <Heading fit caps margin="0 0 .5em">Quelques fonctions pour manipuler les flux</Heading>
+            <Appear>
+              <Text textSize=".8em">aggregate / all / amb / and / any / asObservable / average / buffer /
+                bufferWithCount / bufferWithTime / bufferWithTimeOrCount / catch / combineLatest / concat / concatAll /
+                concatMap / connect / controlled / count / debounce / defaultIfEmpty / delay / delaySubscription /
+                dematerialize / distinct / distinctUntilChanged / do / doOnNext / doOnError / doOnCompleted / doWhile /
+                elementAt / every / expand / extend / filter / finally | ensure / find / findIndex / first / flatMap /
+                flatMapFirst / flatMapLatest / flatMapObserver / flatMapWithMaxConcurrent / forkJoin / groupBy /
+                groupByUntil / groupJoin / ignoreElements / includes / isEmpty / join / last / lastIndexOf / let /
+                manySelect / map / max / maxBy / merge / mergeAll / min / minBy / multicast / observeOn /
+                onErrorResumeNext / pairwise / partition / pausable / pausableBuffered / pluck / publish / publishLast /
+                publishValue / share / shareReplay / shareValue / refCount / reduce / repeat / replay / retry /
+                retryWhen / sample / scan / select / selectConcat / selectMany / selectManyObserver / sequenceEqual /
+                single / singleInstance / skip / skipLast / skipLastWithTime / skipUntil / skipUntilWithTime / skipWhile
+                / slice / some / startWith / subscribe | forEach / subscribeOn / sum / switch | switchLatest /
+                switchFirst / take / takeLast / takeLastBuffer / takeLastBufferWithTime / takeLastWithTime / takeUntil /
+                takeUntilWithTime / takeWhile / tap / tapOnNext / tapOnError / tapOnCompleted / throttle / timeInterval
+                / timeout / timestamp / toArray / where / window / windowWithCount / windowWithTime /
+                windowWithTimeOrCount / withLatestFrom / zip / zipIterable / </Text>
+            </Appear>
           </Slide>
-          <Slide transition={["slide", "spin"]} bgColor="primary">
-            <Heading caps fit size={1} textColor="tertiary">
-              Smooth
-            </Heading>
-            <Heading caps fit size={1} textColor="secondary">
-              Combinable Transitions
-            </Heading>
+
+
+          <Slide bgColor="black">
+            <Heading fit caps>La fonction map()</Heading>
+            <CodePane source={require("raw!../assets/stream.example2.code")}
+                      textSize=".9em"/>
           </Slide>
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+
+          <Slide>
+            <Heading fit caps margin="0 0 .2em">Quelques précisions</Heading>
+            <Layout>
+              <Fill><Heading fit size={2}>Les flux peuvent être chaud ou froid</Heading>
+                <Text textAlign="left" margin=".7em 0">Les froids produisent des valeurs juste au moment de l'appel à
+                  la
+                  méthode
+                  subscribe()</Text>
+                <Text textAlign="left">
+                  Les chauds, produisent des valeurs avant leur souscription (exemple: l'événement click)</Text>
+              </Fill>
+              <Fill><Image src={images.katty.replace("/", "")} width="90%"/></Fill>
+            </Layout>
+
+          </Slide>
+
+          <Slide>
+            <Heading fit caps margin="0 0 .2em">Quelques précisions (bis)</Heading>
+            <Heading fit size={2}>Les flux sont fainéants (lazy en anglais)</Heading>
+
+            <CodePane lang="javascript"
+                      source={require("raw!../assets/code.example7.code")}
+                      textSize=".6em"/>
+          </Slide>
+
+          <Slide>
+            <Heading fit caps>Pourquoi s'y mettre ?</Heading>
             <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
+              <Appear><ListItem>Programmation fonctionnelle réactive</ListItem></Appear>
+              <Appear><ListItem>Code beacoup plus clair pour des problématiques complexes</ListItem></Appear>
+              <Appear><ListItem>Angular2, Cycle.JS, et bien d'autres se basent dessus</ListItem></Appear>
+              <Appear><ListItem>Les Observables risquent d'être natifs en JS dans un futur proche</ListItem></Appear>
             </List>
           </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
-            </Heading>
-            <Interactive/>
+
+          <Slide bgColor="black">
+            <Heading fit caps>Toujours pas convaincu ?</Heading>
+            <List>
+              <Appear><ListItem>Pas besoin de connaître toute la librairie pour l'utiliser (comme
+                Lodash)</ListItem></Appear>
+              <Appear><ListItem>La librairie est disponible dans d'autres langages:</ListItem></Appear>
+              <Appear><ListItem>.NET, C++, JS, Ruby et Python pour RxJS 4</ListItem></Appear>
+              <Appear><ListItem>PHP, Java, Scala, Go, et bien d'autres pour la version 5 !</ListItem></Appear>
+            </List>
           </Slide>
-          <Slide transition={["spin", "slide"]} bgColor="tertiary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-              Made with love in Seattle by
-            </Heading>
-            <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
+
+          <Slide>
+            <Heading fit>Merci de votre attention :)</Heading>
+            <Text>Des questions ?</Text>
+            <Appear><Text textSize="10px">Pas trop compliquées :p</Text></Appear>
           </Slide>
+
         </Deck>
       </Spectacle>
     );

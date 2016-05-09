@@ -1,0 +1,5 @@
+Rx.Observable.fromEvent(document, 'click')
+  .map(() => Date.now())
+  .pairwise()
+  .map(([before, after]) => (after - before))
+  .subscribe(x => console.log(x));

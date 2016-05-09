@@ -1,0 +1,9 @@
+var foo = 'a';
+
+if (foo === 'a') {
+  console.log('foo = a');
+} else {
+  console.log('foo != a');
+}
+
+alert('Voilà tout est fini');

@@ -1,0 +1,21 @@
+function sendLittleSisterToFetchTheBread () {
+  var deferred = $q.defer();
+  var plombes = 1000;
+
+  setTimeout(function () {
+    deferred.resolve('bread');
+  }, 3 * plombes);
+
+  return deferred.promise;
+}
+
+sendLittleSisterToFetchTheBread()
+  .then(function (bread) {
+    console.log('I cut the ' + bread);
+    return 'toast';
+  })
+  .then(function (toast) {
+    console.log('I use the ' + toast + ' to put my butter on it');
+  });
+
+workInTheGarden();

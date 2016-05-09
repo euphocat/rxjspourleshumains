@@ -1,0 +1,15 @@
+const arrayObservable = Rx.Observable
+        .fromArray([1, 2, 3, 4])
+        .map(x => x * 10)
+        .tap(x => console.log(x));
+
+// rien ne s'est encore produit
+setTimeout(() => arrayObservable.subscribe(), 2000);
+
+// toujours rien ne s'est encore produit...
+
+// Après 2 secondes on voit en console
+// 10
+// 20
+// 30
+// 40
