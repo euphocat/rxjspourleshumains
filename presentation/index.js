@@ -78,6 +78,8 @@ export default class Presentation extends React.Component {
               <S type="underline">@euphocat</S>
             </Link>
             </Heading>
+            <Text textColor="secondary" textSize=".6em" margin="1em 0">Source image:
+              http://www.moonfloweryoga.com/corporate-yoga</Text>
           </Slide>
 
           <Slide transition={["slide"]} bgColor="black"
@@ -109,6 +111,8 @@ export default class Presentation extends React.Component {
             <Heading size={2} caps fit textFont="primary">
               L'histoire du code asynchrone en JS
             </Heading>
+            <Text textColor="secondary" textSize=".6em" margin="1em 0">Source image:
+              Universal</Text>
           </Slide>
 
           <Slide transition={["slide"]} bgColor="primary"
@@ -150,6 +154,8 @@ export default class Presentation extends React.Component {
                         source={require("raw!../assets/code.example5.code")}
                         textSize=".5em"/>
             </Appear>
+            <Text textColor="secondary" textSize=".6em" margin="1em 0">Source image:
+              Gaumont Columbia Tristar Films</Text>
           </Slide>
 
           <Slide transition={["slide"]} bgColor="black">
@@ -255,6 +261,8 @@ export default class Presentation extends React.Component {
                 </BlockQuote>
               </Fill>
             </Layout>
+            <Text textColor="secondary" textSize=".6em" margin="1em 0">Source image:
+              twitter.com</Text>
           </Slide>
 
           <Slide>
@@ -300,6 +308,8 @@ export default class Presentation extends React.Component {
               </Fill>
               <Fill><Image src={images.katty.replace("/", "")} width="90%"/></Fill>
             </Layout>
+            <Text textColor="secondary" textSize=".6em" margin="1em 0">Source image:
+              katyperry.wikia.com</Text>
 
           </Slide>
 
@@ -336,7 +346,6 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading fit>Merci de votre attention :)</Heading>
             <Text>Des questions ?</Text>
-            <Appear><Text textSize="10px">Pas trop compliquées :p</Text></Appear>
           </Slide>
 
         </Deck>
