@@ -82,8 +82,7 @@ export default class Presentation extends React.Component {
               http://www.moonfloweryoga.com/corporate-yoga</Text>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="black"
-                 notes="You can even put notes on your slide. How awesome is that?">
+          <Slide transition={["slide"]} bgColor="black">
 
             <Heading size={2} caps fit textFont="primary">
               C'est quoi encore ce truc ?
@@ -103,8 +102,7 @@ export default class Presentation extends React.Component {
 
           </Slide>
 
-          <Slide transition={["slide"]} bgImage={images.back.replace("/", "")} bgDarken={0.75}
-                 notes="You can even put notes on your slide. How awesome is that?">
+          <Slide transition={["slide"]} bgImage={images.back.replace("/", "")} bgDarken={0.75}>
             <Heading size={2} caps fit textColor="primary" textFont="primary">
               Remontons le temps
             </Heading>
@@ -115,8 +113,7 @@ export default class Presentation extends React.Component {
               Universal</Text>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="primary"
-                 notes="You can even put notes on your slide. How awesome is that?">
+          <Slide transition={["slide"]} bgColor="primary">
             <Heading size={2} fit textFont="primary">
               xhr, XMLHttpRequest, AJAX
             </Heading>
@@ -125,8 +122,7 @@ export default class Presentation extends React.Component {
                       textSize=".8em"/>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="black"
-                 notes="You can even put notes on your slide. How awesome is that?">
+          <Slide transition={["slide"]} bgColor="black">
             <Heading size={2} fit textFont="primary">
               jQuery $.ajax, $.get, $.post, $.etc...
             </Heading>
@@ -135,8 +131,7 @@ export default class Presentation extends React.Component {
                       textSize="1em"/>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="black"
-                 notes="You can even put notes on your slide. How awesome is that?">
+          <Slide transition={["slide"]} bgColor="black">
             <Heading size={2} caps textFont="primary">
               Callback HELL
             </Heading>
@@ -265,7 +260,7 @@ export default class Presentation extends React.Component {
               twitter.com</Text>
           </Slide>
 
-          <Slide>
+          <Slide notes="Flux === tableau de valeurs + dimension de temps async => les fonctions qui s'appliquent à un tableau peuvent s'appliquer à un flux">
             <Heading fit caps margin="0 0 .5em">Quelques fonctions pour manipuler les flux</Heading>
             <Appear>
               <Text textSize=".8em">aggregate / all / amb / and / any / asObservable / average / buffer /
@@ -332,7 +327,7 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide bgColor="black">
+          <Slide bgColor="black" notes="La logique RX, programmation fonctionnelle réactive reste la même d'un langage à l'autre">
             <Heading fit caps>Toujours pas convaincu ?</Heading>
             <List>
               <Appear><ListItem>Pas besoin de connaître toute la librairie pour l'utiliser (comme
